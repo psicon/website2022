@@ -1,0 +1,35 @@
+<div class="container">
+    
+        <h1>{{ pimcore_input('headline', {'width': 540}) }}</h1>
+    
+
+    {% if editmode %}
+        {{ pimcore_relations("hotels", {
+            "types": ["object"],
+            "subtypes": {
+                "object": ["object"],
+            }
+        }) }}
+    {% else %}
+        {% set hotels = pimcore_relations("hotels").getData() %}
+        
+            <div class="row">   
+            {% for hotel in hotels %}
+                {% if hotel.name|length > 0 %}
+            
+                    <div class="col">
+                        <h2>{{ hotel.name }} - {{ hotel.stars }} Sterne</h2>
+                        <p>{{ hotel.description }}</p>
+                        
+                        {% for roomblocks in hotel.roomblock %}
+                            <p><b>Zimmer:</b> {{ roomblocks.roomno.getData() }} </p> 
+                        {% endfor %}
+                        
+                    </div>
+                    
+            {% endif %}
+            
+            {% endfor %}
+            </div>
+    {% endif %}
+</div>

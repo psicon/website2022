@@ -1,0 +1,18 @@
+{% if editmode %}
+    {{ pimcore_relations("customers", {
+        "types": ["object"],
+        "subtypes": {
+            "object": ["object"],
+        }
+    }) }}
+{% else %}
+    {% set customers = pimcore_relations("customers").getData() %}
+    <div class="container">
+        {% for customer in customers %}
+            {% if customer.name|length > 0 %}
+                <h1 class="customerheader">Hallo {{ customer.name }} aus {{ customer.city }}</h1>
+                
+           {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}

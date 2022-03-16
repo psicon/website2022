@@ -1,0 +1,25 @@
+<div class="container">
+
+    <h1>{{ pimcore_input('headline', {'width': 540}) }}</h1>
+
+    {% if editmode %}
+        {{ pimcore_relations("flights", {
+            "types": ["object"],
+            "subtypes": {
+                "object": ["object"],
+            }
+        }) }}
+    {% else %}
+        {% set flights = pimcore_relations("flights").getData() %}
+        <div class="row">
+                {% for flight in flights %}
+                    {% if flight.number|length > 0 %}
+                    <div class="col">
+                        <h2>{{ flight.airline }}</h2>
+                            <p>{{ flight.number }}</p>                      
+                        </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+    {% endif %}
+</div>

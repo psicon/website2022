@@ -1,0 +1,50 @@
+# add this to your config/packages/toolbox.yaml
+toolbox:
+    custom_areas:
+        # that's the name of your simple brick.
+        # configuration behaves the same as a default brick
+        my_hotel_brick:
+            config_elements:
+                title:
+                    type: input
+                    title: That's a Title
+                    description: Lorem Ipsum
+                    config: ~
+
+services:
+    # this is the fastest way to create a simple brick.
+    # template needs to be located in /template/areas/my_hotel_brick/view.html.twig
+    App\Document\Areabrick\MyBrick:
+        parent: ToolboxBundle\Document\Areabrick\AbstractAreabrick
+        tags:
+            - {
+                  name: toolbox.area.simple_brick,
+                  id: my_hotel_brick,
+                  title: "Hotel listing Brick",
+              }
+    App\Document\Areabrick\FlightBrick:
+        parent: ToolboxBundle\Document\Areabrick\AbstractAreabrick
+        tags:
+            - {
+                  name: toolbox.area.simple_brick,
+                  id: my_flight_brick,
+                  title: "Flight listing Brick",
+              }
+    App\Document\Areabrick\CustomerBrick:
+        parent: ToolboxBundle\Document\Areabrick\AbstractAreabrick
+        tags:
+            - {
+                  name: toolbox.area.simple_brick,
+                  id: my_customer_brick,
+                  title: "Customer listing Brick",
+              }
+
+              # for simple bricks
+    app.brick.my_simple_brick_without_configurable_options:
+        parent: ToolboxBundle\Document\Areabrick\AbstractBaseAreabrick
+        tags:
+            - {
+                  name: toolbox.area.simple_brick,
+                  id: my_simple_brick_without_configurable_options,
+                  title: "My Simple Brick (Without configurable Options)",
+              }
