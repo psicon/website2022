@@ -1,3 +1,5 @@
+imports:
+    - { resource: toolbox.yaml }
 parameters:
     secret: bxUNfrGsA0Vv1B4YfaMFXx8kA3n3syBj+uQ1c7xew2k=
 
@@ -28,18 +30,6 @@ parameters:
     #pimcore_executable_facedetect: /usr/bin/facedetect
     # graphviz
     #pimcore_executable_dot: /usr/bin/dot
-# add this to your config/packages/toolbox.yaml
-toolbox:
-    custom_areas:
-        # that's the name of your simple brick.
-        # configuration behaves the same as a default brick
-        my_hotel_brick:
-            config_elements:
-                title:
-                    type: input
-                    title: That's a Title
-                    description: Lorem Ipsum
-                    config: ~
 
 services:
     # default configuration for services in *this* file
@@ -51,6 +41,7 @@ services:
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
         public: false
+
     #
     # CONTROLLERS
     #

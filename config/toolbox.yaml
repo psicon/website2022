@@ -22,7 +22,7 @@ services:
                   id: my_hotel_brick,
                   title: "Hotel listing Brick",
               }
-    App\Document\Areabrick\FlightBrick:
+    App\Document\Areabrick\FlightBrick\FlightBrick:
         parent: ToolboxBundle\Document\Areabrick\AbstractAreabrick
         tags:
             - {
